@@ -14,7 +14,7 @@
    <string>WifiBot Alpha V1.00</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="buttonTopward">
     <property name="geometry">
      <rect>
       <x>240</x>
@@ -27,7 +27,7 @@
      <string>Avancer</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="buttonLeft">
     <property name="geometry">
      <rect>
       <x>160</x>
@@ -40,7 +40,7 @@
      <string>Gauche</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="buttonRight">
     <property name="geometry">
      <rect>
       <x>320</x>
@@ -53,7 +53,7 @@
      <string>Droite</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="buttonbackward">
     <property name="geometry">
      <rect>
       <x>240</x>

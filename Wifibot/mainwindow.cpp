@@ -12,3 +12,43 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::on_buttonTopward_pressed()
+{
+
+}
+
+void MainWindow::on_buttonTopward_released()
+{
+
+}
+
+void MainWindow::on_buttonRight_pressed()
+{
+
+}
+
+void MainWindow::on_buttonRight_released()
+{
+
+}
+
+void MainWindow::on_buttonbackward_pressed()
+{
+
+}
+
+void MainWindow::on_buttonbackward_released()
+{
+
+}
+
+void MainWindow::on_buttonLeft_pressed()
+{
+
+}
+
+void MainWindow::on_buttonLeft_released()
+{
+
+}
