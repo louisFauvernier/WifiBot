@@ -14,8 +14,11 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    ../communication.cpp
+    connexion.cpp \
+    communication.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    connexion.h \
+    communication.h
 
 FORMS    += mainwindow.ui

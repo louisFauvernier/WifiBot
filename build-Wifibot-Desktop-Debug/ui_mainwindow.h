@@ -19,6 +19,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QStatusBar>
@@ -48,6 +49,7 @@ public:
     QLineEdit *adIP;
     QLineEdit *port;
     QSlider *vitesse;
+    QProgressBar *battery;
     QMenuBar *menuBar;
     QMenu *menuMenu;
     QToolBar *mainToolBar;
@@ -104,16 +106,20 @@ public:
         backward_label->setGeometry(QRect(80, 30, 57, 15));
         adIP = new QLineEdit(centralWidget);
         adIP->setObjectName(QStringLiteral("adIP"));
-        adIP->setGeometry(QRect(250, 20, 113, 23));
+        adIP->setGeometry(QRect(250, 50, 113, 23));
         port = new QLineEdit(centralWidget);
         port->setObjectName(QStringLiteral("port"));
-        port->setGeometry(QRect(250, 50, 113, 23));
+        port->setGeometry(QRect(250, 80, 113, 23));
         vitesse = new QSlider(centralWidget);
         vitesse->setObjectName(QStringLiteral("vitesse"));
         vitesse->setGeometry(QRect(200, 0, 16, 160));
         vitesse->setMinimum(60);
         vitesse->setMaximum(240);
         vitesse->setOrientation(Qt::Vertical);
+        battery = new QProgressBar(centralWidget);
+        battery->setObjectName(QStringLiteral("battery"));
+        battery->setGeometry(QRect(250, 20, 118, 23));
+        battery->setValue(0);
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -157,6 +163,7 @@ public:
         backward_label->setText(QApplication::translate("MainWindow", "false", 0));
         adIP->setText(QApplication::translate("MainWindow", "192.168.1.106", 0));
         port->setText(QApplication::translate("MainWindow", "15020", 0));
+        battery->setFormat(QApplication::translate("MainWindow", "Batterie : %p%", 0));
         menuMenu->setTitle(QApplication::translate("MainWindow", "Menu", 0));
     } // retranslateUi
 
