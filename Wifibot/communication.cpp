@@ -40,9 +40,15 @@ void Communication::GenMessage(){
     buf.clear();
     buf.append((char)0xff);
     buf.append((char)0x07);
-    buf.append((char)vitesse);
+    if(foreward || backward || left || right)
+        buf.append((char)vitesse);
+    else
+        buf.append((char)0x00);
     buf.append((char)0x00);
-    buf.append((char)vitesse);
+    if(foreward || backward || left || right)
+        buf.append((char)vitesse);
+    else
+        buf.append((char)0x00);
     buf.append((char)0x00);
     if(this->foreward)
     //avant / avant
@@ -56,6 +62,9 @@ void Communication::GenMessage(){
     //arrière / arrière
     else if(this->backward)
         buf.append((char)0b00000000);
+    else{
+        buf.append((char)0b01010000);
+    }
     quint16 crc = this->crc16(buf, 1);
     buf.append((char)crc);
     buf.append((char)(crc>>8));
@@ -70,7 +79,7 @@ void Communication::recvMessage(){
     tcp.read(recv, 21);
     QTextStream cout(stdout, QIODevice::WriteOnly);
     cout << (-(int) recv[2]) << endl;
-    this->battery = -(int) recv[2];
+    this->battery = (int) recv[2]/10;
     cout << ( (int) recv[3]) << endl;
     cout << ( (int) recv[4]) << endl;
     cout << endl;

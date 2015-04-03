@@ -145,7 +145,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "WifiBot Alpha V1.00", 0));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "WifiBot Alpha V1.02", 0));
         actionQuitter->setText(QApplication::translate("MainWindow", "Quitter", 0));
         actionQuitter->setShortcut(QApplication::translate("MainWindow", "Ctrl+Q", 0));
         buttonConnect->setText(QApplication::translate("MainWindow", "Connexion", 0));
