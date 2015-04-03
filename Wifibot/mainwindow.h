@@ -2,7 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QTcpSocket>
+#include "communication.h"
+#include <QTimer>
 
 namespace Ui {
 class MainWindow;
@@ -20,24 +21,17 @@ public:
     bool backward;
     bool left;
     bool right;
-    bool connecte;
-    QByteArray buf;
-    QTcpSocket connexion;
-    void Connexion();
-    void Deconnexion();
-    void GenMessage();
-    void sendMessage();
-    void recvMessage();
-    quint16 crc16(QByteArray byteArray, int pos);
+    QTimer *timer;
+    Communication* co;
 
 private slots:
-    
+
     void on_buttonRight_pressed();
-    
+
     void on_buttonLeft_pressed();
-    
+
     void on_buttonLeft_released();
-    
+
     void on_buttonForeward_pressed();
 
     void on_buttonForeward_released();
@@ -51,6 +45,8 @@ private slots:
     void on_actionQuitter_triggered();
 
     void on_buttonConnect_triggered();
+
+    void update();
 
 private:
     Ui::MainWindow *ui;

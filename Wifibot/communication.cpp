@@ -44,14 +44,19 @@ void Communication::GenMessage(){
     buf.append((char)0x00);
     buf.append((char)vitesse);
     buf.append((char)0x00);
+    if(this->foreward)
     //avant / avant
-    buf.append((char)0b01010000);
+        buf.append((char)0b01010000);
     //arrière / avant
-    //buf.append((char)0b00010000);
+    else if(this->right)
+        buf.append((char)0b00010000);
     //avant / arrière
-    //buf.append((char)0b01000000);
+    else if(this->left)
+        buf.append((char)0b01000000);
     //arrière / arrière
-    //buf.append((char)0b00000000);
+    else if(this->backward)
+        buf.append((char)0b00000000);
+
     quint16 crc = this->crc16(buf, 1);
     buf.append((char)crc);
     buf.append((char)(crc>>8));

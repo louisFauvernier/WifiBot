@@ -7,6 +7,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    co = new Communication(this);
+    timer = new QTimer();
+    timer->setInterval(200);
+    connect(timer, SIGNAL(timeout()), this, SLOT(update()));
+    timer->start();
 }
 
 MainWindow::~MainWindow()
@@ -56,92 +61,46 @@ void MainWindow::on_actionQuitter_triggered()
     exit(0);
 }
 
-void MainWindow::Connexion(){
-    QString port = ui->port->text();
-    QTextStream cout(stdout, QIODevice::WriteOnly);
-    cout << "Connexion à " << ui->adIP->text() << ":" << port << endl;
-    connexion.connectToHost(ui->adIP->text(), port.toInt());
-    if(connexion.waitForConnected(5000)){
-        cout << "Connecté" << endl;
-        ui->buttonConnect->setText("Déconnecter");
-        this->connecte = true;
-    }
-    else{
-        cout << "Echec de la connexion" << endl;
-        this->connecte = false;
-    }
-}
-void MainWindow::Deconnexion(){
-    connexion.disconnectFromHost();
-    ui->buttonConnect->setText("Connecter");
-    this->connecte = false;
-}
-void MainWindow::GenMessage(){
-    buf.clear();
-    buf.append((char)0xff);
-    buf.append((char)0x07);
-    buf.append((char)ui->vitesse->value());
-    buf.append((char)0x00);
-    buf.append((char)ui->vitesse->value());
-    buf.append((char)0x00);
-    //avant / avant
-    buf.append((char)0b01010000);
-    //arrière / avant
-    //buf.append((char)0b00010000);
-    //avant / arrière
-    //buf.append((char)0b01000000);
-    //arrière / arrière
-    //buf.append((char)0b00000000);
-    quint16 crc = this->crc16(buf, 1);
-    buf.append((char)crc);
-    buf.append((char)(crc>>8));
-}
-void MainWindow::sendMessage(){
-    connexion.write(buf);
-    connexion.flush();
-}
-
-void MainWindow::recvMessage(){
-    char recv[21];
-    connexion.read(recv, 21);
-    int i;
-    QTextStream cout(stdout, QIODevice::WriteOnly);
-    cout << (-(int) recv[2]) << endl;
-    cout << ( (int) recv[3]) << endl;
-    cout << ( (int) recv[4]) << endl;
-    cout << endl;
-}
-
 void MainWindow::on_buttonConnect_triggered()
 {
-    this->Connexion();
-    if(this->connecte == true){
-        int i;
-        QTextStream cout(stdout, QIODevice::WriteOnly);
-        cout << "envoie" << endl;
-        for(i=0;i<50;i++){
-            ui->vitesse->setValue(ui->vitesse->value()+1);
-            this->GenMessage();
-            this->sendMessage();
-            this->recvMessage();
-            usleep(100000);
-        }
-        this->Deconnexion();
-        cout << "Déconnecté" << endl;
-     }
-}
-quint16 MainWindow::crc16(QByteArray byteArray, int pos){
-    unsigned char *data = (unsigned char* )byteArray.constData();
-    quint16 crc = 0xFFFF;
-    quint16 Polynome = 0xA001;
-    quint16 Parity = 0;
-    for(; pos < byteArray.length(); pos++){
-        crc ^= *(data+pos);
-        for (unsigned int CptBit = 0; CptBit <= 7 ; CptBit++){
-            Parity= crc;
-            crc >>= 1;
-            if (Parity%2 == true) crc ^= Polynome;
+    if(co->connecte == true){
+        co->Deconnexion();
+        ui->buttonConnect->setText("Connecter");
+        ui->battery->setValue(0);
+    }
+    else{
+        co->adresse = ui->adIP->text();
+        co->port = ui->port->text();
+        co->Connexion();
+        if(co->connecte){
+            ui->buttonConnect->setText("Déconnecter");
         }
     }
-    return crc;
+}
+
+void MainWindow::update(){
+    co->vitesse = ui->vitesse->value();
+    if(co->connecte == true){
+        ui->battery->setValue(co->battery);
+    }
+    if(this->foreward == true)
+        ui->forward_label->setText("True");
+    else
+        ui->forward_label->setText("False");
+    if(this->backward == true)
+        ui->backward_label->setText("True");
+    else
+        ui->backward_label->setText("False");
+    if(this->left == true)
+        ui->left_label->setText("True");
+    else
+        ui->left_label->setText("False");
+    if(this->right == true)
+        ui->right_label->setText("True");
+    else
+        ui->right_label->setText("False");
+    co->foreward = this->foreward;
+    co->backward = this->backward;
+    co->left = this->left;
+    co->right = this->right;
 }
