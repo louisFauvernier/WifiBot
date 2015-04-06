@@ -54,10 +54,10 @@ void Communication::GenMessage(){
     //avant / avant
         buf.append((char)0b01010000);
     //arrière / avant
-    else if(this->right)
+    else if(this->left)
         buf.append((char)0b00010000);
     //avant / arrière
-    else if(this->left)
+    else if(this->right)
         buf.append((char)0b01000000);
     //arrière / arrière
     else if(this->backward)
@@ -79,9 +79,11 @@ void Communication::recvMessage(){
     tcp.read(recv, 21);
     QTextStream cout(stdout, QIODevice::WriteOnly);
     cout << (-(int) recv[2]) << endl;
-    this->battery = (int) recv[2]/10;
+    this->battery = (int) recv[2];
     cout << ( (int) recv[3]) << endl;
+    this->cpt_ir1 = (int) recv[3];
     cout << ( (int) recv[4]) << endl;
+    this->cpt_ir2 = (int) recv[4];
     cout << endl;
 }
 

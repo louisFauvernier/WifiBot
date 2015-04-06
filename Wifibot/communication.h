@@ -19,6 +19,8 @@ public:
     bool backward;
     bool left;
     bool right;
+    int cpt_ir1;
+    int cpt_ir2;
     QTcpSocket tcp;
     QTimer *timer;
     void Connexion();
