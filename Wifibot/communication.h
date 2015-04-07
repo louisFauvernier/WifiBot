@@ -19,6 +19,10 @@ public:
     QByteArray buf;
     QString adresse;
     QString port;
+    QString cameraup;
+    QString cameradown;
+    QString cameraleft;
+    QString cameraright;
     bool connecte;
     bool foreward;
     bool backward;

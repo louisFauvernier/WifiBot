@@ -5,6 +5,10 @@ Communication::Communication(QObject *parent) :
 {
     this->connecte = false;
     this->battery = 0;
+    this->cameraup = "/?action=command&dest=0&plugin=0&id=10094853&group=1&value=-200";
+    this->cameradown = "/?action=command&dest=0&plugin=0&id=10094853&group=1&value=200";
+    this->cameraleft = "/?action=command&dest=0&plugin=0&id=10094852&group=1&value=200";
+    this->cameraright = "/?action=command&dest=0&plugin=0&id=10094852&group=1&value=-200";
     timer = new QTimer();
     timer->setInterval(100);
     connect(timer, SIGNAL(timeout()), this, SLOT(tick()));
