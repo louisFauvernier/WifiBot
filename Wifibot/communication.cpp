@@ -11,16 +11,15 @@ Communication::Communication(QObject *parent) :
 }
 
 void Communication::Connexion(){
-    QTextStream cout(stdout, QIODevice::WriteOnly);
-    cout << "Connexion à " << this->adresse << ":" << this->port << endl;
+    qDebug() << "Connexion à " << this->adresse << ":" << this->port;
     tcp.connectToHost(this->adresse, this->port.toInt());
     if(tcp.waitForConnected(5000)){
-        cout << "Connecté" << endl;
+        qDebug() << "Connecté";
         this->connecte = true;
         timer->start();
     }
     else{
-        cout << "Echec de la Communication" << endl;
+        QMessageBox::critical(0, QObject::tr("Erreur"), QObject::tr("Echec de la Connexion"));
         this->connecte = false;
     }
 }
@@ -35,18 +34,28 @@ void Communication::Deconnexion(){
     tcp.disconnectFromHost();
     this->connecte = false;
     timer->stop();
+    this->cpt_ir1 = 0;
+    this->cpt_ir2 = 0;
+    this->battery = 0;
 }
+
 void Communication::GenMessage(){
     buf.clear();
     buf.append((char)0xff);
     buf.append((char)0x07);
     if(foreward || backward || left || right)
-        buf.append((char)vitesse);
+        if(foreward && this->cpt_ir1 > 0)
+            buf.append((char)vitesse);
+        else
+            buf.append((char)0x00);
     else
         buf.append((char)0x00);
     buf.append((char)0x00);
     if(foreward || backward || left || right)
-        buf.append((char)vitesse);
+        if(foreward && this->cpt_ir2 > 0)
+            buf.append((char)vitesse);
+        else
+            buf.append((char)0x00);
     else
         buf.append((char)0x00);
     buf.append((char)0x00);
@@ -62,13 +71,11 @@ void Communication::GenMessage(){
     //arrière / arrière
     else if(this->backward)
         buf.append((char)0b00000000);
-    else{
-        buf.append((char)0b01010000);
-    }
     quint16 crc = this->crc16(buf, 1);
     buf.append((char)crc);
     buf.append((char)(crc>>8));
 }
+
 void Communication::sendMessage(){
     tcp.write(buf);
     tcp.flush();
@@ -77,14 +84,12 @@ void Communication::sendMessage(){
 void Communication::recvMessage(){
     char recv[21];
     tcp.read(recv, 21);
-    QTextStream cout(stdout, QIODevice::WriteOnly);
-    cout << (-(int) recv[2]) << endl;
+    qDebug() << "Batterie " << (-(int) recv[2]) << endl;
     this->battery = (int) recv[2];
-    cout << ( (int) recv[3]) << endl;
+    qDebug() << "cpt_ir1" << ( (int) recv[3]) << endl;
     this->cpt_ir1 = (int) recv[3];
-    cout << ( (int) recv[4]) << endl;
+    qDebug() << "cpt_ir2" << ( (int) recv[4]) << endl;
     this->cpt_ir2 = (int) recv[4];
-    cout << endl;
 }
 
 quint16 Communication::crc16(QByteArray byteArray, int pos){

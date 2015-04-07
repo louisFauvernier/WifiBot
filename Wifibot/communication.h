@@ -4,6 +4,11 @@
 #include <QObject>
 #include <QTcpSocket>
 #include <QTimer>
+#include <QDebug>
+#include <QMessageBox>
+#include <QInputDialog>
+#include <QIcon>
+
 
 
 class Communication : public QObject

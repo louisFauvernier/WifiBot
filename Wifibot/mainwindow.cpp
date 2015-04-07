@@ -103,4 +103,6 @@ void MainWindow::update(){
     co->backward = this->backward;
     co->left = this->left;
     co->right = this->right;
+    ui->ir_avant->setChecked(co->cpt_ir1<0);
+    ui->ir_arriere->setChecked(co->cpt_ir2<0);
 }

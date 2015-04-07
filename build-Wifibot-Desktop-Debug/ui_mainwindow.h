@@ -21,6 +21,7 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
@@ -50,6 +51,8 @@ public:
     QLineEdit *port;
     QSlider *vitesse;
     QProgressBar *battery;
+    QRadioButton *ir_avant;
+    QRadioButton *ir_arriere;
     QMenuBar *menuBar;
     QMenu *menuMenu;
     QToolBar *mainToolBar;
@@ -118,8 +121,16 @@ public:
         vitesse->setOrientation(Qt::Vertical);
         battery = new QProgressBar(centralWidget);
         battery->setObjectName(QStringLiteral("battery"));
-        battery->setGeometry(QRect(250, 20, 118, 23));
+        battery->setGeometry(QRect(250, 20, 111, 23));
         battery->setValue(0);
+        ir_avant = new QRadioButton(centralWidget);
+        ir_avant->setObjectName(QStringLiteral("ir_avant"));
+        ir_avant->setGeometry(QRect(50, 130, 61, 21));
+        ir_avant->setCheckable(false);
+        ir_arriere = new QRadioButton(centralWidget);
+        ir_arriere->setObjectName(QStringLiteral("ir_arriere"));
+        ir_arriere->setGeometry(QRect(50, 150, 99, 21));
+        ir_arriere->setCheckable(false);
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -145,7 +156,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "WifiBot Alpha V1.02", 0));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "WifiBot Alpha V1.03", 0));
         actionQuitter->setText(QApplication::translate("MainWindow", "Quitter", 0));
         actionQuitter->setShortcut(QApplication::translate("MainWindow", "Ctrl+Q", 0));
         buttonConnect->setText(QApplication::translate("MainWindow", "Connexion", 0));
@@ -164,6 +175,8 @@ public:
         adIP->setText(QApplication::translate("MainWindow", "192.168.1.106", 0));
         port->setText(QApplication::translate("MainWindow", "15020", 0));
         battery->setFormat(QApplication::translate("MainWindow", "Batterie : %p%", 0));
+        ir_avant->setText(QApplication::translate("MainWindow", "Avant", 0));
+        ir_arriere->setText(QApplication::translate("MainWindow", "Arriere", 0));
         menuMenu->setTitle(QApplication::translate("MainWindow", "Menu", 0));
     } // retranslateUi
 
