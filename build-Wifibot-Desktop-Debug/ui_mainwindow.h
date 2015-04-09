@@ -126,11 +126,12 @@ public:
         ir_avant = new QRadioButton(centralWidget);
         ir_avant->setObjectName(QStringLiteral("ir_avant"));
         ir_avant->setGeometry(QRect(50, 130, 61, 21));
-        ir_avant->setCheckable(false);
+        ir_avant->setAutoExclusive(false);
         ir_arriere = new QRadioButton(centralWidget);
         ir_arriere->setObjectName(QStringLiteral("ir_arriere"));
         ir_arriere->setGeometry(QRect(50, 150, 99, 21));
-        ir_arriere->setCheckable(false);
+        ir_arriere->setCheckable(true);
+        ir_arriere->setAutoExclusive(false);
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));

@@ -8,6 +8,8 @@
 #include <QMessageBox>
 #include <QInputDialog>
 #include <QIcon>
+#include <QNetworkAccessManager>
+#include <QUrl>
 
 
 
@@ -23,7 +25,9 @@ public:
     QString cameradown;
     QString cameraleft;
     QString cameraright;
+    QNetworkAccessManager camera;
     bool connecte;
+    bool webcam;
     bool foreward;
     bool backward;
     bool left;
