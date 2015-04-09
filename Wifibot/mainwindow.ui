@@ -66,137 +66,6 @@
      <string>Reculer</string>
     </property>
    </widget>
-<<<<<<< HEAD
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>57</width>
-      <height>15</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Foreward</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>30</y>
-      <width>57</width>
-      <height>15</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Backward</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>50</y>
-      <width>57</width>
-      <height>15</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>left</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>70</y>
-      <width>57</width>
-      <height>15</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>right</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="forward_label">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>10</y>
-      <width>57</width>
-      <height>15</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>false</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="right_label">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>70</y>
-      <width>57</width>
-      <height>15</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>false</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="left_label">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>50</y>
-      <width>57</width>
-      <height>15</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>false</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="backward_label">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>30</y>
-      <width>57</width>
-      <height>15</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>false</string>
-=======
-   <widget class="QLineEdit" name="adIP">
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>50</y>
-      <width>113</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>192.168.1.106</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="port">
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>80</y>
-      <width>113</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>15020</string>
->>>>>>> 3d75c683e75c94f66e559a17d5b026a669ffdf43
-    </property>
-   </widget>
    <widget class="QSlider" name="vitesse">
     <property name="geometry">
      <rect>
@@ -274,7 +143,7 @@
      <x>0</x>
      <y>0</y>
      <width>400</width>
-     <height>25</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMenu">
