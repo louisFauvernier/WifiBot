@@ -82,27 +82,11 @@ void MainWindow::update(){
     co->vitesse = ui->vitesse->value();
     if(co->connecte == true){
         ui->battery->setValue(co->battery);
+        ui->ir_avant->setChecked(co->cpt_ir1<0);
+        ui->ir_arriere->setChecked(co->cpt_ir2<0);
     }
-    if(this->foreward == true)
-        ui->forward_label->setText("True");
-    else
-        ui->forward_label->setText("False");
-    if(this->backward == true)
-        ui->backward_label->setText("True");
-    else
-        ui->backward_label->setText("False");
-    if(this->left == true)
-        ui->left_label->setText("True");
-    else
-        ui->left_label->setText("False");
-    if(this->right == true)
-        ui->right_label->setText("True");
-    else
-        ui->right_label->setText("False");
     co->foreward = this->foreward;
     co->backward = this->backward;
     co->left = this->left;
     co->right = this->right;
-    ui->ir_avant->setChecked(co->cpt_ir1<0);
-    ui->ir_arriere->setChecked(co->cpt_ir2<0);
 }
