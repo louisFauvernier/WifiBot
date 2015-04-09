@@ -13,6 +13,8 @@ MainWindow::MainWindow(QWidget *parent) :
     timer->setInterval(200);
     connect(timer, SIGNAL(timeout()), this, SLOT(update()));
     timer->start();
+
+    ui->mainToolBar->addWidget(ui->battery);
 }
 
 MainWindow::~MainWindow()
