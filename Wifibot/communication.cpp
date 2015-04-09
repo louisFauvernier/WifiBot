@@ -20,17 +20,18 @@ Communication::Communication(QObject *parent) :
     connect(timer, SIGNAL(timeout()), this, SLOT(tick()));
 }
 
-void Communication::Connexion(){
-    qDebug() << "Connexion à " << this->adresse << ":" << this->port;
-    tcp.connectToHost(this->adresse, this->port.toInt());
+bool Communication::Connexion(QString address, quint16 port){
+    qDebug() << "Connexion à " << address << ":" << port;
+    tcp.connectToHost(address, port);
     if(tcp.waitForConnected(5000)){
         qDebug() << "Connecté";
         this->connecte = true;
         timer->start();
+        return true;
     }
     else{
-        QMessageBox::critical(0, QObject::tr("Erreur"), QObject::tr("Echec de la Connexion"));
         this->connecte = false;
+        return false;
     }
 }
 

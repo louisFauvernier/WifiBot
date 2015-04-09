@@ -1,18 +1,28 @@
 #ifndef CONNEXION_H
 #define CONNEXION_H
 
-#include <QObject>
+#include <QDialog>
+#include "communication.h"
 
-class connexion : public QObject
+namespace Ui {
+class Connexion;
+}
+
+class Connexion : public QDialog
 {
     Q_OBJECT
+
 public:
-    connexion(QObject *parent = 0);
+    explicit Connexion(QWidget *parent, Communication *co);
+    ~Connexion();
 
-public slots:
+private slots:
+    void on_buttonBox_accepted();
 
-signals:
-
+private:
+    Ui::Connexion *ui;
+    Communication* co;
+    QWidget* parent;
 };
 
 #endif // CONNEXION_H

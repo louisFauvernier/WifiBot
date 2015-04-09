@@ -36,7 +36,7 @@ public:
     int cpt_ir2;
     QTcpSocket tcp;
     QTimer *timer;
-    void Connexion();
+    bool Connexion(QString address, quint16 port);
     void Deconnexion();
     void GenMessage();
     void sendMessage();

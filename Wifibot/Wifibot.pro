@@ -22,4 +22,5 @@ HEADERS  += mainwindow.h \
     connexion.h \
     communication.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+        connexion.ui

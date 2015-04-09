@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "connexion.h"
 #include <unistd.h>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -18,6 +19,12 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+Ui::MainWindow *MainWindow::getUI()
+{
+    return this->ui;
+}
+
 
 void MainWindow::on_buttonForeward_pressed()
 {
@@ -63,19 +70,18 @@ void MainWindow::on_actionQuitter_triggered()
 
 void MainWindow::on_buttonConnect_triggered()
 {
-    if(co->connecte == true){
-        co->Deconnexion();
-        ui->buttonConnect->setText("Connecter");
-        ui->battery->setValue(0);
-    }
-    else{
-        co->adresse = ui->adIP->text();
-        co->port = ui->port->text();
-        co->Connexion();
-        if(co->connecte){
-            ui->buttonConnect->setText("Déconnecter");
+        Connexion* conn = new Connexion(this, co);
+
+        // Accepted
+        if (conn->exec() == 1)
+        {
+            QMessageBox::information(this, "Connexion","Connexion réussi",QMessageBox::Ok);
         }
-    }
+        // Refused
+        else
+        {
+            QMessageBox::warning(this, "Connexion","Connexion impossible", QMessageBox::Ok);
+        }
 }
 
 void MainWindow::update(){

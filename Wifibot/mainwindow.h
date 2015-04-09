@@ -17,6 +17,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void modifyLabel(QString, QString);
+    Ui::MainWindow * getUI();
     bool foreward;
     bool backward;
     bool left;
