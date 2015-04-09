@@ -91,6 +91,8 @@ void Communication::GenMessage(){
         //arrière / arrière
         else if(this->backward)
             buf.append((char)0b00000000);
+        else
+            buf.append((char)0b01010000);
         quint16 crc = this->crc16(buf, 1);
         buf.append((char)crc);
         buf.append((char)(crc>>8));
