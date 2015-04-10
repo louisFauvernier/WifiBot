@@ -57,20 +57,24 @@ void MainWindow::update(){
 // Foreward
 void MainWindow::on_buttonForeward_pressed()
 {
+    ui->buttonForeward->setIcon(QIcon(":/foreward_enable.png"));
     this->foreward = true;
 }
 void MainWindow::on_buttonForeward_released()
 {
+    ui->buttonForeward->setIcon(QIcon(":/foreward_disable.png"));
     this->foreward = false;
 }
 
 // Right
 void MainWindow::on_buttonRight_pressed()
 {
+    ui->buttonRight->setIcon(QIcon(":/right_enable.png"));
     this->right = true;
 }
 void MainWindow::on_buttonRight_released()
 {
+    ui->buttonRight->setIcon(QIcon(":/right_disable.png"));
     this->right = false;
 }
 
@@ -78,22 +82,26 @@ void MainWindow::on_buttonRight_released()
 // Left
 void MainWindow::on_buttonLeft_pressed()
 {
+    ui->buttonLeft->setIcon(QIcon(":/left_enable.png"));
     this->left = true;
 }
 
 void MainWindow::on_buttonLeft_released()
 {
+    ui->buttonLeft->setIcon(QIcon(":/left_disable.png"));
     this->left = false;
 }
 
 // Backward
 void MainWindow::on_buttonBackward_pressed()
 {
+    ui->buttonBackward->setIcon(QIcon(":/backward_enable.png"));
     this->backward = true;
 }
 
 void MainWindow::on_buttonBackward_released()
 {
+    ui->buttonBackward->setIcon(QIcon(":/backward_disable.png"));
     this->backward = false;
 }
 

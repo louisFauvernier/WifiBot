@@ -109,35 +109,6 @@
      <property name="spacing">
       <number>0</number>
      </property>
-     <item row="2" column="1">
-      <widget class="QPushButton" name="buttonRight">
-       <property name="maximumSize">
-        <size>
-         <width>50</width>
-         <height>50</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border: 0; border-radius: 3px; outline: 0px;</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset resource="img/res.qrc">
-         <normaloff>:/backward_disable.png</normaloff>:/backward_disable.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>50</width>
-         <height>50</height>
-        </size>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
      <item row="1" column="0">
       <widget class="QPushButton" name="buttonLeft">
        <property name="minimumSize">
@@ -161,35 +132,6 @@
        <property name="icon">
         <iconset resource="img/res.qrc">
          <normaloff>:/left_disable.png</normaloff>:/left_disable.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>50</width>
-         <height>50</height>
-        </size>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="2">
-      <widget class="QPushButton" name="buttonBackward">
-       <property name="maximumSize">
-        <size>
-         <width>50</width>
-         <height>50</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border: 0; border-radius: 3px; outline: 0px;</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset resource="img/res.qrc">
-         <normaloff>:/right_disable.png</normaloff>:/right_disable.png</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -257,6 +199,64 @@
        <property name="icon">
         <iconset resource="img/res.qrc">
          <normaloff>:/robot.png</normaloff>:/robot.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QPushButton" name="buttonBackward">
+       <property name="maximumSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: 0; border-radius: 3px; outline: 0px;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="img/res.qrc">
+         <normaloff>:/backward_disable.png</normaloff>:/backward_disable.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QPushButton" name="buttonRight">
+       <property name="maximumSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: 0; border-radius: 3px; outline: 0px;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="img/res.qrc">
+         <normaloff>:/right_disable.png</normaloff>:/right_disable.png</iconset>
        </property>
        <property name="iconSize">
         <size>
