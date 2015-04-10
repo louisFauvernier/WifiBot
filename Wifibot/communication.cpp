@@ -10,6 +10,7 @@ Communication::Communication(QObject *parent) :
     this->left = false;
     this->right = false;
     this->battery = 0;
+    this->webcam = true;
     camera = new QNetworkAccessManager(this);
     timer = new QTimer();
     timer->setInterval(100);
@@ -56,6 +57,25 @@ void Communication::GenMessage(){
             QUrl url("http://" + this->adresse +":8080" + cameradown);
             camera->get(QNetworkRequest(url));
          }
+        else if(left){
+            QUrl url("http://" + this->adresse +":8080" + cameraleft);
+            camera->get(QNetworkRequest(url));
+         }
+        else if(right){
+            QUrl url("http://" + this->adresse +":8080" + cameraright);
+            camera->get(QNetworkRequest(url));
+         }
+        buf.clear();
+        buf.append((char)0xff);
+        buf.append((char)0x07);
+        buf.append((char)0x00);
+        buf.append((char)0x00);
+        buf.append((char)0x00);
+        buf.append((char)0x00);
+        buf.append((char)0b01010000);
+        quint16 crc = this->crc16(buf, 1);
+        buf.append((char)crc);
+        buf.append((char)(crc>>8));
     }
     else{
         buf.clear();
