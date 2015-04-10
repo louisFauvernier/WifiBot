@@ -10,11 +10,7 @@ Communication::Communication(QObject *parent) :
     this->left = false;
     this->right = false;
     this->battery = 0;
-    this->cameraup = "/?action=command&dest=0&plugin=0&id=10094853&group=1&value=-200";
-    this->cameradown = "/?action=command&dest=0&plugin=0&id=10094853&group=1&value=200";
-    this->cameraleft = "/?action=command&dest=0&plugin=0&id=10094852&group=1&value=200";
-    this->cameraright = "/?action=command&dest=0&plugin=0&id=10094852&group=1&value=-200";
-    //camera = new QNetworkAccessManager(this);
+    camera = new QNetworkAccessManager(this);
     timer = new QTimer();
     timer->setInterval(100);
     connect(timer, SIGNAL(timeout()), this, SLOT(tick()));
@@ -52,15 +48,21 @@ void Communication::Deconnexion(){
 
 void Communication::GenMessage(){
     if(webcam){
-        QUrl url("http://" + this->adresse +":8080" + cameraup);
-
+        if(foreward){
+            QUrl url("http://"+ this->adresse +":8080"cameraup);
+            camera->get(QNetworkRequest(url));
+         }
+        else if(backward){
+            QUrl url("http://" + this->adresse +":8080" + cameradown);
+            camera->get(QNetworkRequest(url));
+         }
     }
     else{
         buf.clear();
         buf.append((char)0xff);
         buf.append((char)0x07);
         if(foreward || backward || left || right)
-            if((foreward|| left || right) && this->cpt_ir1 > 0)
+            if(left || right || (foreward && this->cpt_ir1 > 0))
                 buf.append((char)vitesse);
             else if(backward && this->cpt_ir2 > 0)
                 buf.append((char)vitesse);
@@ -70,7 +72,7 @@ void Communication::GenMessage(){
             buf.append((char)0x00);
         buf.append((char)0x00);
         if(foreward || backward || left || right)
-            if((foreward|| left || right) && this->cpt_ir1 > 0)
+            if(left || right || (foreward && this->cpt_ir1 > 0))
                 buf.append((char)vitesse);
             else if(backward && this->cpt_ir2 > 0)
                 buf.append((char)vitesse);
@@ -107,11 +109,9 @@ void Communication::sendMessage(){
 void Communication::recvMessage(){
     char recv[21];
     tcp.read(recv, 21);
-    qDebug() << "Batterie " << (-(int) recv[2]) << endl;
-    this->battery = (-(int) recv[2]);
-    qDebug() << "cpt_ir1" << ( (int) recv[3]) << endl;
+    qDebug() << "Batterie " << ((unsigned char) recv[2] * 0.5) << endl;
+    this->battery = ((unsigned char) recv[2] * 0.5);
     this->cpt_ir1 = (int) recv[3];
-    qDebug() << "cpt_ir2" << ( (int) recv[4]) << endl;
     this->cpt_ir2 = (int) recv[4];
 }
 

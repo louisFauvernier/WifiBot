@@ -9,8 +9,13 @@
 #include <QInputDialog>
 #include <QIcon>
 #include <QNetworkAccessManager>
+#include <QtNetwork>
 #include <QUrl>
 
+#define cameraup "/?action=command&dest=0&plugin=0&id=10094853&group=1&value=-200"
+#define cameradown "/?action=command&dest=0&plugin=0&id=10094853&group=1&value=200"
+#define cameraleft "/?action=command&dest=0&plugin=0&id=10094852&group=1&value=200"
+#define cameraright "/?action=command&dest=0&plugin=0&id=10094852&group=1&value=-200"
 
 
 class Communication : public QObject
@@ -21,11 +26,7 @@ public:
     QByteArray buf;
     QString adresse;
     QString port;
-    QString cameraup;
-    QString cameradown;
-    QString cameraleft;
-    QString cameraright;
-    QNetworkAccessManager camera;
+    QNetworkAccessManager *camera;
     bool connecte;
     bool webcam;
     bool foreward;
