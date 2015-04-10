@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>camera.png</file>
+        <file>left_disable.png</file>
+        <file>right_disable.png</file>
+        <file>robot.png</file>
+        <file>backward_disable.png</file>
+        <file>foreward_disable.png</file>
+        <file>backward_enable.png</file>
+        <file>foreward_enable.png</file>
+        <file>right_enable.png</file>
+        <file>left_enable.png</file>
+    </qresource>
+</RCC>

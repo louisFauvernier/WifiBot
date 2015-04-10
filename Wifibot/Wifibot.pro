@@ -24,3 +24,8 @@ HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui \
         connexion.ui
+
+RESOURCES += \
+    img/res.qrc
+
+OTHER_FILES +=

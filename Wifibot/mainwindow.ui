@@ -14,63 +14,11 @@
    <string>WifiBot Alpha V1.03</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="buttonForeward">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>150</y>
-      <width>80</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Avancer</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="buttonLeft">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>180</y>
-      <width>80</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Gauche</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="buttonRight">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>180</y>
-      <width>80</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Droite</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="buttonBackward">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>210</y>
-      <width>80</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Reculer</string>
-    </property>
-   </widget>
    <widget class="QSlider" name="vitesse">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>0</y>
+      <x>110</x>
+      <y>70</y>
       <width>16</width>
       <height>160</height>
      </rect>
@@ -104,14 +52,20 @@
    <widget class="QRadioButton" name="ir_avant">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>200</y>
-      <width>61</width>
+      <x>30</x>
+      <y>90</y>
+      <width>91</width>
       <height>21</height>
      </rect>
     </property>
     <property name="text">
      <string>Avant</string>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>50</width>
+      <height>24</height>
+     </size>
     </property>
     <property name="autoExclusive">
      <bool>false</bool>
@@ -121,7 +75,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>220</y>
+      <y>150</y>
       <width>99</width>
       <height>21</height>
      </rect>
@@ -129,12 +83,193 @@
     <property name="text">
      <string>Arriere</string>
     </property>
+    <property name="iconSize">
+     <size>
+      <width>50</width>
+      <height>24</height>
+     </size>
+    </property>
     <property name="checkable">
      <bool>true</bool>
     </property>
     <property name="autoExclusive">
      <bool>false</bool>
     </property>
+   </widget>
+   <widget class="QWidget" name="gridLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>77</y>
+      <width>161</width>
+      <height>160</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <item row="2" column="1">
+      <widget class="QPushButton" name="buttonRight">
+       <property name="maximumSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: 0; border-radius: 3px; outline: 0px;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="img/res.qrc">
+         <normaloff>:/backward_disable.png</normaloff>:/backward_disable.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QPushButton" name="buttonLeft">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: 0; border-radius: 3px; outline: 0px;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="img/res.qrc">
+         <normaloff>:/left_disable.png</normaloff>:/left_disable.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QPushButton" name="buttonBackward">
+       <property name="maximumSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: 0; border-radius: 3px; outline: 0px;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="img/res.qrc">
+         <normaloff>:/right_disable.png</normaloff>:/right_disable.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QPushButton" name="buttonForeward">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="toolTipDuration">
+        <number>-1</number>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: 0; border-radius: 3px; outline: 0px;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="img/res.qrc">
+         <normaloff>:/foreward_disable.png</normaloff>:/foreward_disable.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QPushButton" name="pushButton">
+       <property name="maximumSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: 0; border-radius: 3px; outline: 0px;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="img/res.qrc">
+         <normaloff>:/robot.png</normaloff>:/robot.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -152,6 +287,7 @@
     </property>
     <addaction name="actionQuitter"/>
     <addaction name="buttonConnect"/>
+    <addaction name="actionDeconnexion"/>
    </widget>
    <addaction name="menuMenu"/>
   </widget>
@@ -160,7 +296,7 @@
     <enum>TopToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
-    <bool>true</bool>
+    <bool>false</bool>
    </attribute>
    <addaction name="separator"/>
   </widget>
@@ -184,8 +320,15 @@
     <enum>QAction::ApplicationSpecificRole</enum>
    </property>
   </action>
+  <action name="actionDeconnexion">
+   <property name="text">
+    <string>Deconnexion</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="img/res.qrc"/>
+ </resources>
  <connections/>
 </ui>

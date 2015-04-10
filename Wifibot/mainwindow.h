@@ -18,6 +18,7 @@ public:
     ~MainWindow();
     void modifyLabel(QString, QString);
     Ui::MainWindow * getUI();
+    void initComponents();
     bool foreward;
     bool backward;
     bool left;
@@ -48,6 +49,8 @@ private slots:
     void on_buttonConnect_triggered();
 
     void update();
+
+    void on_actionDeconnexion_triggered();
 
 private:
     Ui::MainWindow *ui;
