@@ -10,7 +10,7 @@ Communication::Communication(QObject *parent) :
     this->left = false;
     this->right = false;
     this->battery = 0;
-    this->webcam = true;
+    this->webcam = false;
     camera = new QNetworkAccessManager(this);
     timer = new QTimer();
     timer->setInterval(100);
@@ -24,6 +24,8 @@ bool Communication::Connexion(QString address, quint16 port){
         qDebug() << "Connecté";
         this->connecte = true;
         timer->start();
+        this->adresse = address;
+        this->port = port;
         return true;
     }
     else{
