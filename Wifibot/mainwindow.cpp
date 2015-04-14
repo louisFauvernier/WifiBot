@@ -105,6 +105,22 @@ void MainWindow::on_buttonBackward_released()
     this->backward = false;
 }
 
+/** CAMERA **/
+
+void MainWindow::on_buttonCamera_clicked()
+{
+    if (co->webcam)
+    {
+        ui->buttonCamera->setIcon(QIcon(":/robot.png"));
+        co->webcam = false;
+    }
+    else
+    {
+        ui->buttonCamera->setIcon(QIcon(":/camera.png"));
+        co->webcam = true;
+    }
+}
+
 /** MENU ACTIONS **/
 
 
@@ -137,3 +153,5 @@ void MainWindow::on_actionDeconnexion_triggered()
     co->Deconnexion();
     QMessageBox::information(this, "Deconnexion","Deconnexion réussi",QMessageBox::Ok);
 }
+
+

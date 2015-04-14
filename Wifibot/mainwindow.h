@@ -52,6 +52,8 @@ private slots:
 
     void on_actionDeconnexion_triggered();
 
+    void on_buttonCamera_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
