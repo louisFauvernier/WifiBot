@@ -13,7 +13,10 @@ MainWindow::MainWindow(QWidget *parent) :
     timer->setInterval(200);
     connect(timer, SIGNAL(timeout()), this, SLOT(update()));
     timer->start();
-
+    this->foreward = false;
+    this->backward = false;
+    this->left = false;
+    this->right = false;
     initComponents();
 }
 
@@ -53,7 +56,6 @@ void MainWindow::initComponents()
     connect(mediaPlayer, SIGNAL(positionChanged(qint64)), this, SLOT(positionChanged(qint64)));
     connect(mediaPlayer, SIGNAL(durationChanged(qint64)), this, SLOT(durationChanged(qint64)));
     connect(mediaPlayer, SIGNAL(error(QMediaPlayer::Error)), this, SLOT(handleError()));
-
     setInterfaceEnabled(false);
 }
 
@@ -184,9 +186,6 @@ Ui::MainWindow *MainWindow::getUI()
 {
     return this->ui;
 }
-
-
-
 
 void MainWindow::update(){
     co->vitesse = ui->vitesse->value();

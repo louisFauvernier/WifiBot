@@ -19,9 +19,12 @@ Communication::Communication(QObject *parent) :
 
 bool Communication::Connexion(QString address, quint16 port){
     qDebug() << "Connexion à " << address << ":" << port;
+    this->foreward = false;
+    this->backward = false;
+    this->left = false;
+    this->right = false;
     tcp.connectToHost(address, port);
     if(tcp.waitForConnected(5000)){
-        qDebug() << "Connecté";
         this->connecte = true;
         timer->start();
         this->adresse = address;
@@ -38,6 +41,7 @@ void Communication::tick(){
     GenMessage();
     sendMessage();
     recvMessage();
+    qDebug() << "foreward" << this->foreward << "backward"<<this->backward <<"right" << this->right << "left" << this->left;
 }
 
 void Communication::Deconnexion(){
@@ -132,6 +136,7 @@ void Communication::recvMessage(){
     char recv[21];
     tcp.read(recv, 21);
     qDebug() << "Batterie " << ((unsigned char) recv[2] * 0.5) << endl;
+    qDebug() << "recv[0]" << (unsigned char) recv[0] << " recv[1] " << (unsigned char) recv[1];
     this->battery = ((unsigned char) recv[2] * 0.5);
     this->cpt_ir1 = (int) recv[3];
     this->cpt_ir2 = (int) recv[4];
