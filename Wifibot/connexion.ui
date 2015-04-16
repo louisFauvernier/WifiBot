@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>200</width>
     <height>100</height>
    </rect>
   </property>
@@ -17,8 +17,8 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>60</y>
-     <width>381</width>
+     <y>70</y>
+     <width>181</width>
      <height>32</height>
     </rect>
    </property>
@@ -34,15 +34,15 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>381</width>
-     <height>31</height>
+     <width>181</width>
+     <height>62</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="2">
-     <widget class="QLabel" name="label_port">
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_address">
       <property name="text">
-       <string>Port</string>
+       <string>IP</string>
       </property>
      </widget>
     </item>
@@ -53,14 +53,14 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="label_address">
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_port">
       <property name="text">
-       <string>IP</string>
+       <string>Port</string>
       </property>
      </widget>
     </item>
-    <item row="0" column="3">
+    <item row="1" column="1">
      <widget class="QLineEdit" name="lineEdit_port">
       <property name="text">
        <string>15020</string>

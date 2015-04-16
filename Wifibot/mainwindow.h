@@ -4,6 +4,16 @@
 #include <QMainWindow>
 #include "communication.h"
 #include <QTimer>
+#include <qmediaplayer.h>
+
+#include <QtGui/QMovie>
+#include <QtWidgets/QWidget>
+#include "connexion.h"
+
+#include <unistd.h>
+#include <QtWidgets>
+#include <qvideowidget.h>
+#include <qvideosurfaceformat.h>
 
 namespace Ui {
 class MainWindow;
@@ -46,7 +56,7 @@ private slots:
 
     void on_actionQuitter_triggered();
 
-    void on_buttonConnect_triggered();
+    void on_actionConnexion_triggered();
 
     void update();
 
@@ -54,8 +64,18 @@ private slots:
 
     void on_buttonCamera_clicked();
 
+    void on_buttonConnexion_triggered();
+
 private:
     Ui::MainWindow *ui;
+
+    QMediaPlayer *mediaPlayer;
+    QProgressBar *battery;
+    QRadioButton *forewardSensor;
+    QRadioButton *backwardSensor;
+    QVideoWidget *videoWidget;
+
+    void setInterfaceEnabled(bool b);
 };
 
 #endif // MAINWINDOW_H
