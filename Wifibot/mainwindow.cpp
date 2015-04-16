@@ -137,22 +137,20 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
 }
 void MainWindow::keyReleaseEvent(QKeyEvent *event){
     if(event->key() == Qt::Key_Z){
-        if(event->key() == Qt::Key_Z){
-            ui->buttonForeward->setIcon(QIcon(":/foreward_disable.png"));
-            this->foreward = false;
-        }
-        else if(event->key() == Qt::Key_Q){
-            ui->buttonLeft->setIcon(QIcon(":/left_disable.png"));
-            this->left = false;
-        }
-        else if(event->key() == Qt::Key_S){
-            ui->buttonBackward->setIcon(QIcon(":/backward_disable.png"));
-            this->backward = false;
-        }
-        else if(event->key() == Qt::Key_D){
-            ui->buttonRight->setIcon(QIcon(":/right_disable.png"));
-            this->right = false;
-        }
+        ui->buttonForeward->setIcon(QIcon(":/foreward_disable.png"));
+        this->foreward = false;
+    }
+    else if(event->key() == Qt::Key_Q){
+        ui->buttonLeft->setIcon(QIcon(":/left_disable.png"));
+        this->left = false;
+    }
+    else if(event->key() == Qt::Key_S){
+        ui->buttonBackward->setIcon(QIcon(":/backward_disable.png"));
+        this->backward = false;
+    }
+    else if(event->key() == Qt::Key_D){
+        ui->buttonRight->setIcon(QIcon(":/right_disable.png"));
+        this->right = false;
     }
 }
 
