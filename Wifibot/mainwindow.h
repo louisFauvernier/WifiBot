@@ -14,6 +14,7 @@
 #include <QtWidgets>
 #include <qvideowidget.h>
 #include <qvideosurfaceformat.h>
+#include <QKeyEvent>
 
 namespace Ui {
 class MainWindow;
@@ -35,6 +36,8 @@ public:
     bool right;
     QTimer *timer;
     Communication* co;
+    void keyReleaseEvent(QKeyEvent *event);
+    void keyPressEvent(QKeyEvent *event);
 
 private slots:
 
@@ -74,6 +77,7 @@ private:
     QVideoWidget *videoWidget;
 
     void setInterfaceEnabled(bool b);
+
 };
 
 #endif // MAINWINDOW_H
