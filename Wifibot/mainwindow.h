@@ -64,8 +64,6 @@ private slots:
 
     void on_buttonCamera_clicked();
 
-    void on_buttonConnexion_triggered();
-
 private:
     Ui::MainWindow *ui;
 

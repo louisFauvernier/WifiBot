@@ -53,6 +53,8 @@ void MainWindow::initComponents()
     connect(mediaPlayer, SIGNAL(positionChanged(qint64)), this, SLOT(positionChanged(qint64)));
     connect(mediaPlayer, SIGNAL(durationChanged(qint64)), this, SLOT(durationChanged(qint64)));
     connect(mediaPlayer, SIGNAL(error(QMediaPlayer::Error)), this, SLOT(handleError()));
+
+    setInterfaceEnabled(false);
 }
 
 /** BUTTON DIRECTIONS **/
@@ -73,7 +75,7 @@ void MainWindow::on_buttonForeward_released()
 // Right
 void MainWindow::on_buttonRight_pressed()
 {
-    //ui->buttonRight->setIcon(QIcon(":/right_enable.png"));
+    ui->buttonRight->setIcon(QIcon(":/right_enable.png"));
     this->right = true;
 }
 void MainWindow::on_buttonRight_released()
@@ -163,6 +165,7 @@ void MainWindow::on_actionConnexion_triggered()
     else
     {
         QMessageBox::warning(this, "Connexion","Connexion impossible", QMessageBox::Ok);
+        setInterfaceEnabled(false);
     }
 }
 
@@ -199,14 +202,12 @@ void MainWindow::update(){
 }
 
 void MainWindow::setInterfaceEnabled(bool b){
+    ui->actionDeconnexion->setEnabled(b);
     ui->buttonForeward->setEnabled(b);
     ui->buttonBackward->setEnabled(b);
     ui->buttonLeft->setEnabled(b);
     ui->buttonRight->setEnabled(b);
     ui->buttonCamera->setEnabled(b);
-}
-
-void MainWindow::on_buttonConnexion_triggered()
-{
-
+    ui->vitesse->setEnabled(b);
+    ui->mainToolBar->setVisible(b);
 }
