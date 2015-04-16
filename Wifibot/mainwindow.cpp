@@ -114,43 +114,53 @@ void MainWindow::on_buttonBackward_released()
 
 /** KEYBOARD **/
 void MainWindow::keyPressEvent(QKeyEvent *event){
-    if(event->key() == Qt::Key_Z){
-        ui->buttonForeward->setIcon(QIcon(":/foreward_enable.png"));
-        this->foreward = true;
-    }
-    else if(event->key() == Qt::Key_Q){
-        ui->buttonLeft->setIcon(QIcon(":/left_enable.png"));
-        this->left = true;
-    }
-    else if(event->key() == Qt::Key_S){
-        ui->buttonBackward->setIcon(QIcon(":/backward_enable.png"));
-        this->backward = true;
-    }
-    else if(event->key() == Qt::Key_D){
-        ui->buttonRight->setIcon(QIcon(":/right_enable.png"));
-        this->right = true;
-    }
-    else if(event->key() == Qt::Key_R){
-        QUrl url("http://"+co->adresse+":8080/?action=command&dest=0&plugin=0&id=10094855&group=1&value=1");
-        co->camera->get(QNetworkRequest(url));
+    if(co->connecte){
+        if(event->key() == Qt::Key_Z){
+            ui->buttonForeward->setIcon(QIcon(":/foreward_enable.png"));
+            this->foreward = true;
+        }
+        else if(event->key() == Qt::Key_Q){
+            ui->buttonLeft->setIcon(QIcon(":/left_enable.png"));
+            this->left = true;
+        }
+        else if(event->key() == Qt::Key_S){
+            ui->buttonBackward->setIcon(QIcon(":/backward_enable.png"));
+            this->backward = true;
+        }
+        else if(event->key() == Qt::Key_D){
+            ui->buttonRight->setIcon(QIcon(":/right_enable.png"));
+            this->right = true;
+        }
+        else if(event->key() == Qt::Key_R){
+            QUrl url("http://"+co->adresse+":8080/?action=command&dest=0&plugin=0&id=10094855&group=1&value=1");
+            co->camera->get(QNetworkRequest(url));
+        }
+        else if(event->key() == Qt::Key_A){
+            ui->vitesse->setValue(ui->vitesse->value() + 10);
+        }
+        else if(event->key() == Qt::Key_E){
+            ui->vitesse->setValue(ui->vitesse->value() - 10);
+        }
     }
 }
 void MainWindow::keyReleaseEvent(QKeyEvent *event){
-    if(event->key() == Qt::Key_Z){
-        ui->buttonForeward->setIcon(QIcon(":/foreward_disable.png"));
-        this->foreward = false;
-    }
-    else if(event->key() == Qt::Key_Q){
-        ui->buttonLeft->setIcon(QIcon(":/left_disable.png"));
-        this->left = false;
-    }
-    else if(event->key() == Qt::Key_S){
-        ui->buttonBackward->setIcon(QIcon(":/backward_disable.png"));
-        this->backward = false;
-    }
-    else if(event->key() == Qt::Key_D){
-        ui->buttonRight->setIcon(QIcon(":/right_disable.png"));
-        this->right = false;
+    if(co->connecte){
+        if(event->key() == Qt::Key_Z){
+            ui->buttonForeward->setIcon(QIcon(":/foreward_disable.png"));
+            this->foreward = false;
+        }
+        else if(event->key() == Qt::Key_Q){
+            ui->buttonLeft->setIcon(QIcon(":/left_disable.png"));
+            this->left = false;
+        }
+        else if(event->key() == Qt::Key_S){
+            ui->buttonBackward->setIcon(QIcon(":/backward_disable.png"));
+            this->backward = false;
+        }
+        else if(event->key() == Qt::Key_D){
+            ui->buttonRight->setIcon(QIcon(":/right_disable.png"));
+            this->right = false;
+        }
     }
 }
 
