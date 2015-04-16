@@ -141,6 +141,22 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
         else if(event->key() == Qt::Key_E){
             ui->vitesse->setValue(ui->vitesse->value() - 10);
         }
+        else if(event->key() == Qt::Key_O){
+            QUrl url("http://"+ co->adresse +":8080" + cameraup);
+            co->camera->get(QNetworkRequest(url));
+        }
+        else if(event->key() == Qt::Key_L){
+            QUrl url("http://"+ co->adresse +":8080" + cameradown);
+            co->camera->get(QNetworkRequest(url));
+        }
+        else if(event->key() == Qt::Key_K){
+            QUrl url("http://"+ co->adresse +":8080" + cameraleft);
+            co->camera->get(QNetworkRequest(url));
+        }
+        else if(event->key() == Qt::Key_M){
+            QUrl url("http://"+ co->adresse +":8080" + cameraright);
+            co->camera->get(QNetworkRequest(url));
+        }
     }
 }
 void MainWindow::keyReleaseEvent(QKeyEvent *event){

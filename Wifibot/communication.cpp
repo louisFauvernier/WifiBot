@@ -41,7 +41,6 @@ void Communication::tick(){
     GenMessage();
     sendMessage();
     recvMessage();
-    qDebug() << "foreward" << this->foreward << "backward"<<this->backward <<"right" << this->right << "left" << this->left;
 }
 
 void Communication::Deconnexion(){

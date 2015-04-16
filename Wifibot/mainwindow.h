@@ -16,6 +16,11 @@
 #include <qvideosurfaceformat.h>
 #include <QKeyEvent>
 
+#define cameraup "/?action=command&dest=0&plugin=0&id=10094853&group=1&value=-200"
+#define cameradown "/?action=command&dest=0&plugin=0&id=10094853&group=1&value=200"
+#define cameraleft "/?action=command&dest=0&plugin=0&id=10094852&group=1&value=200"
+#define cameraright "/?action=command&dest=0&plugin=0&id=10094852&group=1&value=-200"
+
 namespace Ui {
 class MainWindow;
 }
