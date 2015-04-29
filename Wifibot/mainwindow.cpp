@@ -54,6 +54,8 @@ void MainWindow::initComponents()
     connect(mediaPlayer, SIGNAL(durationChanged(qint64)), this, SLOT(durationChanged(qint64)));
     connect(mediaPlayer, SIGNAL(error(QMediaPlayer::Error)), this, SLOT(handleError()));
 
+    ui->dockWidgetCamera->setMinimumHeight(325);
+
     setInterfaceEnabled(false);
 }
 
@@ -125,7 +127,33 @@ void MainWindow::on_buttonCamera_clicked()
         ui->buttonCamera->setIcon(QIcon(":/camera.png"));
         co->webcam = true;
 
-        mediaPlayer->setMedia(QUrl("http://192.168.1.106:8080/?action=stream"));
+        //mediaPlayer->setMedia(QUrl("http://192.168.1.106:8080/?action=stream"));
+
+        //mediaPlayer->mediaStream()
+
+        cv::VideoCapture capture(url);
+
+        if (!capture->isOpened()) {
+            //Error
+        }
+
+        cv::namedWindow("TEST", CV_WINDOW_AUTOSIZE);
+
+        cv::Mat frame;
+
+        while(m_enable) {
+            if (!capture->read(frame)) {
+                //Error
+            }
+            cv::imshow("TEST", frame);
+
+            cv::waitKey(30);
+        }
+
+
+        this->resize(400, 600);
+
+
 
         switch(mediaPlayer->state()) {
         case QMediaPlayer::PlayingState:
@@ -185,9 +213,6 @@ Ui::MainWindow *MainWindow::getUI()
     return this->ui;
 }
 
-
-
-
 void MainWindow::update(){
     co->vitesse = ui->vitesse->value();
     if(co->connecte == true){
@@ -202,12 +227,13 @@ void MainWindow::update(){
 }
 
 void MainWindow::setInterfaceEnabled(bool b){
+    ui->actionConnexion->setEnabled(!b);
     ui->actionDeconnexion->setEnabled(b);
     ui->buttonForeward->setEnabled(b);
     ui->buttonBackward->setEnabled(b);
     ui->buttonLeft->setEnabled(b);
     ui->buttonRight->setEnabled(b);
-    ui->buttonCamera->setEnabled(b);
+    //ui->buttonCamera->setEnabled(b);
     ui->vitesse->setEnabled(b);
     ui->mainToolBar->setVisible(b);
 }
