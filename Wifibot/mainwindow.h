@@ -9,11 +9,20 @@
 #include <QtGui/QMovie>
 #include <QtWidgets/QWidget>
 #include "connexion.h"
+#include "camera.h"
+#include "viewergl.h"
 
 #include <unistd.h>
 #include <QtWidgets>
 #include <qvideowidget.h>
 #include <qvideosurfaceformat.h>
+#include <QKeyEvent>
+
+
+#define cameraup "/?action=command&dest=0&plugin=0&id=10094853&group=1&value=-200"
+#define cameradown "/?action=command&dest=0&plugin=0&id=10094853&group=1&value=200"
+#define cameraleft "/?action=command&dest=0&plugin=0&id=10094852&group=1&value=200"
+#define cameraright "/?action=command&dest=0&plugin=0&id=10094852&group=1&value=-200"
 
 namespace Ui {
 class MainWindow;
@@ -35,6 +44,8 @@ public:
     bool right;
     QTimer *timer;
     Communication* co;
+    void keyReleaseEvent(QKeyEvent *event);
+    void keyPressEvent(QKeyEvent *event);
 
 private slots:
 
@@ -67,13 +78,16 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
+    Camera *w;
+
     QMediaPlayer *mediaPlayer;
     QProgressBar *battery;
     QRadioButton *forewardSensor;
     QRadioButton *backwardSensor;
-    QVideoWidget *videoWidget;
+    ViewerGl *videoWidget;
 
     void setInterfaceEnabled(bool b);
+
 };
 
 #endif // MAINWINDOW_H

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.2.1
+** Created by: Qt User Interface Compiler version 5.4.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -13,15 +13,14 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QDockWidget>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
-#include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
@@ -33,30 +32,24 @@ class Ui_MainWindow
 {
 public:
     QAction *actionQuitter;
-    QAction *buttonConnect;
+    QAction *actionConnexion;
+    QAction *actionDeconnexion;
     QWidget *centralWidget;
-    QPushButton *buttonForeward;
-    QPushButton *buttonLeft;
-    QPushButton *buttonRight;
-    QPushButton *buttonBackward;
-    QLabel *label;
-    QLabel *label_2;
-    QLabel *label_3;
-    QLabel *label_4;
-    QLabel *forward_label;
-    QLabel *right_label;
-    QLabel *left_label;
-    QLabel *backward_label;
-    QLineEdit *adIP;
-    QLineEdit *port;
+    QWidget *horizontalLayoutWidget;
+    QHBoxLayout *horizontalLayout;
     QSlider *vitesse;
-    QProgressBar *battery;
-    QRadioButton *ir_avant;
-    QRadioButton *ir_arriere;
+    QGridLayout *gridLayout;
+    QPushButton *buttonLeft;
+    QPushButton *buttonForeward;
+    QPushButton *buttonCamera;
+    QPushButton *buttonBackward;
+    QPushButton *buttonRight;
     QMenuBar *menuBar;
     QMenu *menuMenu;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
+    QDockWidget *dockWidgetCamera;
+    QWidget *dockWidgetContents;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -66,89 +59,141 @@ public:
         actionQuitter = new QAction(MainWindow);
         actionQuitter->setObjectName(QStringLiteral("actionQuitter"));
         actionQuitter->setMenuRole(QAction::ApplicationSpecificRole);
-        buttonConnect = new QAction(MainWindow);
-        buttonConnect->setObjectName(QStringLiteral("buttonConnect"));
-        buttonConnect->setMenuRole(QAction::ApplicationSpecificRole);
+        actionConnexion = new QAction(MainWindow);
+        actionConnexion->setObjectName(QStringLiteral("actionConnexion"));
+        actionConnexion->setMenuRole(QAction::ApplicationSpecificRole);
+        actionDeconnexion = new QAction(MainWindow);
+        actionDeconnexion->setObjectName(QStringLiteral("actionDeconnexion"));
+        actionDeconnexion->setEnabled(false);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        buttonForeward = new QPushButton(centralWidget);
-        buttonForeward->setObjectName(QStringLiteral("buttonForeward"));
-        buttonForeward->setGeometry(QRect(240, 150, 80, 23));
-        buttonLeft = new QPushButton(centralWidget);
-        buttonLeft->setObjectName(QStringLiteral("buttonLeft"));
-        buttonLeft->setGeometry(QRect(160, 180, 80, 23));
-        buttonRight = new QPushButton(centralWidget);
-        buttonRight->setObjectName(QStringLiteral("buttonRight"));
-        buttonRight->setGeometry(QRect(320, 180, 80, 23));
-        buttonBackward = new QPushButton(centralWidget);
-        buttonBackward->setObjectName(QStringLiteral("buttonBackward"));
-        buttonBackward->setGeometry(QRect(240, 210, 80, 23));
-        label = new QLabel(centralWidget);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(10, 10, 57, 15));
-        label_2 = new QLabel(centralWidget);
-        label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(10, 30, 57, 15));
-        label_3 = new QLabel(centralWidget);
-        label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(10, 50, 57, 15));
-        label_4 = new QLabel(centralWidget);
-        label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(10, 70, 57, 15));
-        forward_label = new QLabel(centralWidget);
-        forward_label->setObjectName(QStringLiteral("forward_label"));
-        forward_label->setGeometry(QRect(80, 10, 57, 15));
-        right_label = new QLabel(centralWidget);
-        right_label->setObjectName(QStringLiteral("right_label"));
-        right_label->setGeometry(QRect(80, 70, 57, 15));
-        left_label = new QLabel(centralWidget);
-        left_label->setObjectName(QStringLiteral("left_label"));
-        left_label->setGeometry(QRect(80, 50, 57, 15));
-        backward_label = new QLabel(centralWidget);
-        backward_label->setObjectName(QStringLiteral("backward_label"));
-        backward_label->setGeometry(QRect(80, 30, 57, 15));
-        adIP = new QLineEdit(centralWidget);
-        adIP->setObjectName(QStringLiteral("adIP"));
-        adIP->setGeometry(QRect(250, 50, 113, 23));
-        port = new QLineEdit(centralWidget);
-        port->setObjectName(QStringLiteral("port"));
-        port->setGeometry(QRect(250, 80, 113, 23));
-        vitesse = new QSlider(centralWidget);
+        horizontalLayoutWidget = new QWidget(centralWidget);
+        horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
+        horizontalLayoutWidget->setGeometry(QRect(10, 10, 381, 154));
+        horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
+        horizontalLayout->setSpacing(0);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        vitesse = new QSlider(horizontalLayoutWidget);
         vitesse->setObjectName(QStringLiteral("vitesse"));
-        vitesse->setGeometry(QRect(200, 0, 16, 160));
+        vitesse->setEnabled(false);
+        vitesse->setMinimumSize(QSize(20, 0));
         vitesse->setMinimum(60);
         vitesse->setMaximum(240);
         vitesse->setOrientation(Qt::Vertical);
-        battery = new QProgressBar(centralWidget);
-        battery->setObjectName(QStringLiteral("battery"));
-        battery->setGeometry(QRect(250, 20, 111, 23));
-        battery->setValue(0);
-        ir_avant = new QRadioButton(centralWidget);
-        ir_avant->setObjectName(QStringLiteral("ir_avant"));
-        ir_avant->setGeometry(QRect(50, 130, 61, 21));
-        ir_avant->setAutoExclusive(false);
-        ir_arriere = new QRadioButton(centralWidget);
-        ir_arriere->setObjectName(QStringLiteral("ir_arriere"));
-        ir_arriere->setGeometry(QRect(50, 150, 99, 21));
-        ir_arriere->setCheckable(true);
-        ir_arriere->setAutoExclusive(false);
+
+        horizontalLayout->addWidget(vitesse);
+
+        gridLayout = new QGridLayout();
+        gridLayout->setSpacing(0);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        buttonLeft = new QPushButton(horizontalLayoutWidget);
+        buttonLeft->setObjectName(QStringLiteral("buttonLeft"));
+        buttonLeft->setEnabled(false);
+        buttonLeft->setMinimumSize(QSize(0, 0));
+        buttonLeft->setMaximumSize(QSize(50, 50));
+        buttonLeft->setStyleSheet(QStringLiteral("border: 0; border-radius: 3px; outline: 0px;"));
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/left_disable.png"), QSize(), QIcon::Normal, QIcon::Off);
+        buttonLeft->setIcon(icon);
+        buttonLeft->setIconSize(QSize(50, 50));
+        buttonLeft->setFlat(true);
+
+        gridLayout->addWidget(buttonLeft, 1, 0, 1, 1);
+
+        buttonForeward = new QPushButton(horizontalLayoutWidget);
+        buttonForeward->setObjectName(QStringLiteral("buttonForeward"));
+        buttonForeward->setEnabled(false);
+        QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(buttonForeward->sizePolicy().hasHeightForWidth());
+        buttonForeward->setSizePolicy(sizePolicy);
+        buttonForeward->setMaximumSize(QSize(50, 50));
+        buttonForeward->setToolTipDuration(-1);
+        buttonForeward->setStyleSheet(QStringLiteral("border: 0; border-radius: 3px; outline: 0px;"));
+        QIcon icon1;
+        icon1.addFile(QStringLiteral(":/foreward_disable.png"), QSize(), QIcon::Normal, QIcon::Off);
+        buttonForeward->setIcon(icon1);
+        buttonForeward->setIconSize(QSize(50, 50));
+        buttonForeward->setFlat(true);
+
+        gridLayout->addWidget(buttonForeward, 0, 1, 1, 1);
+
+        buttonCamera = new QPushButton(horizontalLayoutWidget);
+        buttonCamera->setObjectName(QStringLiteral("buttonCamera"));
+        buttonCamera->setEnabled(true);
+        buttonCamera->setMaximumSize(QSize(50, 50));
+        buttonCamera->setStyleSheet(QStringLiteral("border: 0; border-radius: 3px; outline: 0px;"));
+        QIcon icon2;
+        icon2.addFile(QStringLiteral(":/robot.png"), QSize(), QIcon::Normal, QIcon::Off);
+        buttonCamera->setIcon(icon2);
+        buttonCamera->setIconSize(QSize(50, 50));
+        buttonCamera->setFlat(true);
+
+        gridLayout->addWidget(buttonCamera, 1, 1, 1, 1);
+
+        buttonBackward = new QPushButton(horizontalLayoutWidget);
+        buttonBackward->setObjectName(QStringLiteral("buttonBackward"));
+        buttonBackward->setEnabled(false);
+        buttonBackward->setMaximumSize(QSize(50, 50));
+        buttonBackward->setStyleSheet(QStringLiteral("border: 0; border-radius: 3px; outline: 0px;"));
+        QIcon icon3;
+        icon3.addFile(QStringLiteral(":/backward_disable.png"), QSize(), QIcon::Normal, QIcon::Off);
+        buttonBackward->setIcon(icon3);
+        buttonBackward->setIconSize(QSize(50, 50));
+        buttonBackward->setFlat(true);
+
+        gridLayout->addWidget(buttonBackward, 2, 1, 1, 1);
+
+        buttonRight = new QPushButton(horizontalLayoutWidget);
+        buttonRight->setObjectName(QStringLiteral("buttonRight"));
+        buttonRight->setEnabled(true);
+        buttonRight->setMaximumSize(QSize(50, 50));
+        buttonRight->setStyleSheet(QStringLiteral("border: 0; border-radius: 3px; outline: 0px;"));
+        QIcon icon4;
+        icon4.addFile(QStringLiteral(":/right_disable.png"), QSize(), QIcon::Normal, QIcon::Off);
+        buttonRight->setIcon(icon4);
+        buttonRight->setIconSize(QSize(50, 50));
+        buttonRight->setFlat(true);
+
+        gridLayout->addWidget(buttonRight, 1, 2, 1, 1);
+
+
+        horizontalLayout->addLayout(gridLayout);
+
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 400, 20));
+        menuBar->setGeometry(QRect(0, 0, 400, 25));
         menuMenu = new QMenu(menuBar);
         menuMenu->setObjectName(QStringLiteral("menuMenu"));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
+        mainToolBar->setEnabled(false);
         MainWindow->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         MainWindow->setStatusBar(statusBar);
+        dockWidgetCamera = new QDockWidget(MainWindow);
+        dockWidgetCamera->setObjectName(QStringLiteral("dockWidgetCamera"));
+        dockWidgetCamera->setEnabled(false);
+        dockWidgetCamera->setMinimumSize(QSize(400, 41));
+        dockWidgetCamera->setLayoutDirection(Qt::LeftToRight);
+        dockWidgetCamera->setFloating(false);
+        dockWidgetContents = new QWidget();
+        dockWidgetContents->setObjectName(QStringLiteral("dockWidgetContents"));
+        dockWidgetCamera->setWidget(dockWidgetContents);
+        MainWindow->addDockWidget(static_cast<Qt::DockWidgetArea>(8), dockWidgetCamera);
 
         menuBar->addAction(menuMenu->menuAction());
         menuMenu->addAction(actionQuitter);
-        menuMenu->addAction(buttonConnect);
+        menuMenu->addAction(actionConnexion);
+        menuMenu->addAction(actionDeconnexion);
+        mainToolBar->addSeparator();
 
         retranslateUi(MainWindow);
 
@@ -157,27 +202,16 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "WifiBot Alpha V1.03", 0));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "WifiBot Alpha V1.04", 0));
         actionQuitter->setText(QApplication::translate("MainWindow", "Quitter", 0));
         actionQuitter->setShortcut(QApplication::translate("MainWindow", "Ctrl+Q", 0));
-        buttonConnect->setText(QApplication::translate("MainWindow", "Connexion", 0));
-        buttonForeward->setText(QApplication::translate("MainWindow", "Avancer", 0));
-        buttonLeft->setText(QApplication::translate("MainWindow", "Gauche", 0));
-        buttonRight->setText(QApplication::translate("MainWindow", "Droite", 0));
-        buttonBackward->setText(QApplication::translate("MainWindow", "Reculer", 0));
-        label->setText(QApplication::translate("MainWindow", "Foreward", 0));
-        label_2->setText(QApplication::translate("MainWindow", "Backward", 0));
-        label_3->setText(QApplication::translate("MainWindow", "left", 0));
-        label_4->setText(QApplication::translate("MainWindow", "right", 0));
-        forward_label->setText(QApplication::translate("MainWindow", "false", 0));
-        right_label->setText(QApplication::translate("MainWindow", "false", 0));
-        left_label->setText(QApplication::translate("MainWindow", "false", 0));
-        backward_label->setText(QApplication::translate("MainWindow", "false", 0));
-        adIP->setText(QApplication::translate("MainWindow", "192.168.1.106", 0));
-        port->setText(QApplication::translate("MainWindow", "15020", 0));
-        battery->setFormat(QApplication::translate("MainWindow", "Batterie : %p%", 0));
-        ir_avant->setText(QApplication::translate("MainWindow", "Avant", 0));
-        ir_arriere->setText(QApplication::translate("MainWindow", "Arriere", 0));
+        actionConnexion->setText(QApplication::translate("MainWindow", "Connexion", 0));
+        actionDeconnexion->setText(QApplication::translate("MainWindow", "Deconnexion", 0));
+        buttonLeft->setText(QString());
+        buttonForeward->setText(QString());
+        buttonCamera->setText(QString());
+        buttonBackward->setText(QString());
+        buttonRight->setText(QString());
         menuMenu->setTitle(QApplication::translate("MainWindow", "Menu", 0));
     } // retranslateUi
 

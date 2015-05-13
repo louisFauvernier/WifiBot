@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui network
+QT       += core gui network opengl
 QT += multimedia multimediawidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -16,11 +16,15 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     connexion.cpp \
-    communication.cpp
+    communication.cpp \
+    camera.cpp \
+    viewergl.cpp
 
 HEADERS  += mainwindow.h \
     connexion.h \
-    communication.h
+    communication.h \
+    camera.h \
+    viewergl.h
 
 FORMS    += mainwindow.ui \
         connexion.ui
@@ -28,4 +32,14 @@ FORMS    += mainwindow.ui \
 RESOURCES += \
     img/res.qrc
 
-OTHER_FILES +=
+unix {
+message("Using unix configuration")
+LIBS += `pkg-config --libs opencv`
+}
+
+INCLUDEPATH += /usr/local/include/opencv \
+               /usr/local/include
+
+message("OpenCV path: $$OPENCV_PATH")
+message("Includes path: $$INCLUDEPATH")
+message("Libraries: $$LIBS")

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>WifiBot Alpha V1.03</string>
+   <string>WifiBot Alpha V1.04</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QWidget" name="horizontalLayoutWidget">
@@ -20,7 +20,7 @@
       <x>10</x>
       <y>10</y>
       <width>381</width>
-      <height>151</height>
+      <height>154</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
@@ -84,7 +84,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="img/res.qrc">
+          <iconset>
            <normaloff>:/left_disable.png</normaloff>:/left_disable.png</iconset>
          </property>
          <property name="iconSize">
@@ -125,7 +125,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="img/res.qrc">
+          <iconset>
            <normaloff>:/foreward_disable.png</normaloff>:/foreward_disable.png</iconset>
          </property>
          <property name="iconSize">
@@ -157,7 +157,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="img/res.qrc">
+          <iconset>
            <normaloff>:/robot.png</normaloff>:/robot.png</iconset>
          </property>
          <property name="iconSize">
@@ -189,7 +189,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="img/res.qrc">
+          <iconset>
            <normaloff>:/backward_disable.png</normaloff>:/backward_disable.png</iconset>
          </property>
          <property name="iconSize">
@@ -221,7 +221,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="img/res.qrc">
+          <iconset>
            <normaloff>:/right_disable.png</normaloff>:/right_disable.png</iconset>
          </property>
          <property name="iconSize">
@@ -279,7 +279,7 @@
    <property name="minimumSize">
     <size>
      <width>400</width>
-     <height>10</height>
+     <height>41</height>
     </size>
    </property>
    <property name="layoutDirection">
@@ -322,8 +322,6 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources>
-  <include location="img/res.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
