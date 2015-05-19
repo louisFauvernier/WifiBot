@@ -18,7 +18,7 @@ Communication::Communication(QObject *parent) :
 }
 
 bool Communication::Connexion(QString address, quint16 port){
-    qDebug() << "Connexion à " << address << ":" << port;
+    () << "Connexion à " << address << ":" << port;
     this->foreward = false;
     this->backward = false;
     this->left = false;
@@ -86,38 +86,76 @@ void Communication::GenMessage(){
         buf.clear();
         buf.append((char)0xff);
         buf.append((char)0x07);
-        if(foreward || backward || left || right)
-            if(left || right || (foreward && this->cpt_ir1 > 0))
-                buf.append((char)vitesse);
-            else if(backward && this->cpt_ir2 > 0)
-                buf.append((char)vitesse);
-            else
-                buf.append((char)0x00);
-        else
+
+        if(foreward){
+            if(foreward && this->cpt_ir1 > 0){
+                    if(right){
+                        buf.append((char)vitesse);
+                        buf.append((char)0x00);
+                        buf.append((char)(vitesse/2));
+                        buf.append((char)0x00);
+                    }
+                    else if(left){
+                        buf.append((char)(vitesse/2));
+                        buf.append((char)0x00);
+                        buf.append((char)vitesse);
+                        buf.append((char)0x00);
+                    }
+                    else{
+                        buf.append((char)vitesse);
+                        buf.append((char)0x00);
+                        buf.append((char)vitesse);
+                        buf.append((char)0x00);
+                    }
+
+            }
+        }
+        else if(backward && this->cpt_ir2 > 0){
+             if(right){
+                    buf.append((char)vitesse);
+                    buf.append((char)0x00);
+                    buf.append((char)(vitesse/2));
+                    buf.append((char)0x00);
+                }
+                else if(left){
+                    buf.append((char)(vitesse/2));
+                    buf.append((char)0x00);
+                    buf.append((char)vitesse);
+                    buf.append((char)0x00);
+                }
+                else{
+                    buf.append((char)vitesse);
+                    buf.append((char)0x00);
+                    buf.append((char)vitesse);
+                    buf.append((char)0x00);
+                }
+        }
+        else if(left || right){
+            buf.append((char)vitesse);
             buf.append((char)0x00);
-        buf.append((char)0x00);
-        if(foreward || backward || left || right)
-            if(left || right || (foreward && this->cpt_ir1 > 0))
-                buf.append((char)vitesse);
-            else if(backward && this->cpt_ir2 > 0)
-                buf.append((char)vitesse);
-            else
-                buf.append((char)0x00);
-        else
+            buf.append((char)vitesse);
             buf.append((char)0x00);
-        buf.append((char)0x00);
+        }
+        else{
+            buf.append((char)0x00);
+            buf.append((char)0x00);
+            buf.append((char)0x00);
+            buf.append((char)0x00);
+        }
+
+
         if(this->foreward)
         //avant / avant
             buf.append((char)0b01010000);
+        //arrière / arrière
+        else if(this->backward)
+            buf.append((char)0b00000000);
         //arrière / avant
         else if(this->left)
             buf.append((char)0b00010000);
         //avant / arrière
         else if(this->right)
             buf.append((char)0b01000000);
-        //arrière / arrière
-        else if(this->backward)
-            buf.append((char)0b00000000);
         else
             buf.append((char)0b01010000);
         quint16 crc = this->crc16(buf, 1);
@@ -134,9 +172,7 @@ void Communication::sendMessage(){
 void Communication::recvMessage(){
     char recv[21];
     tcp.read(recv, 21);
-    qDebug() << "Batterie " << ((unsigned char) recv[2] * 0.5) << endl;
-    qDebug() << "recv[0]" << (unsigned char) recv[0] << " recv[1] " << (unsigned char) recv[1];
-    this->battery = ((unsigned char) recv[2] * 0.5);
+    this->battery = ((unsigned char) recv[2] * 0.6);
     this->cpt_ir1 = (int) recv[3];
     this->cpt_ir2 = (int) recv[4];
 }
