@@ -18,7 +18,7 @@ Communication::Communication(QObject *parent) :
 }
 
 bool Communication::Connexion(QString address, quint16 port){
-    () << "Connexion à " << address << ":" << port;
+    qDebug() << "Connexion à " << address << ":" << port;
     this->foreward = false;
     this->backward = false;
     this->left = false;
@@ -172,7 +172,7 @@ void Communication::sendMessage(){
 void Communication::recvMessage(){
     char recv[21];
     tcp.read(recv, 21);
-    this->battery = ((unsigned char) recv[2] * 0.6);
+    this->battery = (((unsigned int)((unsigned char)recv[2])) * 100.0 / 255.0);
     this->cpt_ir1 = (int) recv[3];
     this->cpt_ir2 = (int) recv[4];
 }
