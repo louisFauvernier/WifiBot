@@ -18,13 +18,17 @@ MainWindow::MainWindow(QWidget *parent) :
     this->left = false;
     this->right = false;
     initComponents();
+
+
 }
 
+// Destructeur
 MainWindow::~MainWindow()
 {
     delete ui;
 }
 
+// Initialize the interface
 void MainWindow::initComponents()
 {
 
@@ -46,22 +50,9 @@ void MainWindow::initComponents()
     ui->mainToolBar->addSeparator();
 
     // Camera
-    //mediaPlayer = new QMediaPlayer(0, QMediaPlayer::VideoSurface);
-    w = new Camera();
-    videoWidget = new ViewerGl();
+    cam = new Camera(this->ui);
     ui->dockWidgetCamera->setVisible(false);
-    ui->dockWidgetCamera->setWidget(videoWidget);
-    //mediaPlayer->setVideoOutput(videoWidget);
-    w->setVideoOutput(videoWidget);
-
-
-    //connect(mediaPlayer, SIGNAL(stateChanged(QMediaPlayer::State)), this, SLOT(mediaStateChanged(QMediaPlayer::State)));
-    //connect(mediaPlayer, SIGNAL(positionChanged(qint64)), this, SLOT(positionChanged(qint64)));
-    //connect(mediaPlayer, SIGNAL(durationChanged(qint64)), this, SLOT(durationChanged(qint64)));
-    //connect(mediaPlayer, SIGNAL(error(QMediaPlayer::Error)), this, SLOT(handleError()));
-
-    ui->dockWidgetCamera->setMinimumHeight(325);
-
+    //ui->dockWidgetCamera->setMinimumHeight(325);
 
     setInterfaceEnabled(false);
 }
@@ -195,42 +186,17 @@ void MainWindow::on_buttonCamera_clicked()
     {
         ui->buttonCamera->setIcon(QIcon(":/robot.png"));
         co->webcam = false;
-        ui->dockWidgetCamera->setVisible(true);
+
+        cam->stop();
+        this->resize(400, 400);
     }
     else
     {
         ui->buttonCamera->setIcon(QIcon(":/camera.png"));
         co->webcam = true;
 
-        //mediaPlayer->setMedia(QUrl("http://192.168.1.106:8080/?action=stream"));
-
-        //mediaPlayer->mediaStream()
-
-        /*
-        cv::VideoCapture capture(url);
-
-        if (!capture->isOpened()) {
-            //Error
-        }*/
-
-
+        cam->start();
         this->resize(400, 600);
-        /*
-
-        switch(mediaPlayer->state()) {
-        case QMediaPlayer::PlayingState:
-            mediaPlayer->pause();
-            break;
-        default:
-            mediaPlayer->play();
-            break;
-        }
-
-        */
-        ui->dockWidgetCamera->setVisible(true);
-
-        w->start();
-
     }
 }
 
@@ -302,4 +268,9 @@ void MainWindow::setInterfaceEnabled(bool b){
     //ui->buttonCamera->setEnabled(b);
     ui->vitesse->setEnabled(b);
     ui->mainToolBar->setVisible(b);
+}
+
+void MainWindow::on_dockWidgetCamera_destroyed()
+{
+  cam->stop();
 }

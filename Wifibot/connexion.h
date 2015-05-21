@@ -1,8 +1,13 @@
 #ifndef CONNEXION_H
 #define CONNEXION_H
 
-#include <QDialog>
 #include "communication.h"
+#include "mainwindow.h"
+#include "ui_connexion.h"
+#include "ui_mainwindow.h"
+
+#include <QDialog>
+
 
 namespace Ui {
 class Connexion;

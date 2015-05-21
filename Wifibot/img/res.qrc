@@ -10,5 +10,7 @@
         <file>foreward_enable.png</file>
         <file>right_enable.png</file>
         <file>left_enable.png</file>
+        <file>loading.gif</file>
+        <file>error.gif</file>
     </qresource>
 </RCC>

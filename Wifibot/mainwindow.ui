@@ -7,11 +7,20 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>400</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>WifiBot Alpha V1.04</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>true</bool>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QWidget" name="horizontalLayoutWidget">
@@ -20,15 +29,15 @@
       <x>10</x>
       <y>10</y>
       <width>381</width>
-      <height>154</height>
+      <height>253</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <property name="spacing">
-      <number>0</number>
+      <number>100</number>
      </property>
      <property name="sizeConstraint">
-      <enum>QLayout::SetDefaultConstraint</enum>
+      <enum>QLayout::SetMaximumSize</enum>
      </property>
      <property name="leftMargin">
       <number>0</number>
@@ -37,6 +46,12 @@
       <widget class="QSlider" name="vitesse">
        <property name="enabled">
         <bool>false</bool>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
        </property>
        <property name="minimumSize">
         <size>
@@ -57,6 +72,12 @@
      </item>
      <item>
       <layout class="QGridLayout" name="gridLayout">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetMaximumSize</enum>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
        <property name="spacing">
         <number>0</number>
        </property>
@@ -84,7 +105,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset>
+          <iconset resource="img/res.qrc">
            <normaloff>:/left_disable.png</normaloff>:/left_disable.png</iconset>
          </property>
          <property name="iconSize">
@@ -125,7 +146,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset>
+          <iconset resource="img/res.qrc">
            <normaloff>:/foreward_disable.png</normaloff>:/foreward_disable.png</iconset>
          </property>
          <property name="iconSize">
@@ -157,7 +178,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset>
+          <iconset resource="img/res.qrc">
            <normaloff>:/robot.png</normaloff>:/robot.png</iconset>
          </property>
          <property name="iconSize">
@@ -189,7 +210,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset>
+          <iconset resource="img/res.qrc">
            <normaloff>:/backward_disable.png</normaloff>:/backward_disable.png</iconset>
          </property>
          <property name="iconSize">
@@ -206,7 +227,7 @@
        <item row="1" column="2">
         <widget class="QPushButton" name="buttonRight">
          <property name="enabled">
-          <bool>true</bool>
+          <bool>false</bool>
          </property>
          <property name="maximumSize">
           <size>
@@ -221,7 +242,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset>
+          <iconset resource="img/res.qrc">
            <normaloff>:/right_disable.png</normaloff>:/right_disable.png</iconset>
          </property>
          <property name="iconSize">
@@ -274,19 +295,28 @@
   <widget class="QStatusBar" name="statusBar"/>
   <widget class="QDockWidget" name="dockWidgetCamera">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="minimumSize">
     <size>
      <width>400</width>
-     <height>41</height>
+     <height>300</height>
     </size>
+   </property>
+   <property name="acceptDrops">
+    <bool>true</bool>
    </property>
    <property name="layoutDirection">
     <enum>Qt::LeftToRight</enum>
    </property>
+   <property name="autoFillBackground">
+    <bool>true</bool>
+   </property>
    <property name="floating">
     <bool>false</bool>
+   </property>
+   <property name="features">
+    <set>QDockWidget::AllDockWidgetFeatures</set>
    </property>
    <attribute name="dockWidgetArea">
     <number>8</number>
@@ -322,6 +352,8 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="img/res.qrc"/>
+ </resources>
  <connections/>
 </ui>

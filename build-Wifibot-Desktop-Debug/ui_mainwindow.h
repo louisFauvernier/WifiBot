@@ -55,7 +55,13 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(400, 300);
+        MainWindow->resize(400, 400);
+        QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(MainWindow->sizePolicy().hasHeightForWidth());
+        MainWindow->setSizePolicy(sizePolicy);
+        MainWindow->setAutoFillBackground(true);
         actionQuitter = new QAction(MainWindow);
         actionQuitter->setObjectName(QStringLiteral("actionQuitter"));
         actionQuitter->setMenuRole(QAction::ApplicationSpecificRole);
@@ -69,16 +75,21 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         horizontalLayoutWidget = new QWidget(centralWidget);
         horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
-        horizontalLayoutWidget->setGeometry(QRect(10, 10, 381, 154));
+        horizontalLayoutWidget->setGeometry(QRect(10, 10, 381, 253));
         horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
-        horizontalLayout->setSpacing(0);
+        horizontalLayout->setSpacing(100);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        horizontalLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
+        horizontalLayout->setSizeConstraint(QLayout::SetMaximumSize);
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         vitesse = new QSlider(horizontalLayoutWidget);
         vitesse->setObjectName(QStringLiteral("vitesse"));
         vitesse->setEnabled(false);
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(vitesse->sizePolicy().hasHeightForWidth());
+        vitesse->setSizePolicy(sizePolicy1);
         vitesse->setMinimumSize(QSize(20, 0));
         vitesse->setMinimum(60);
         vitesse->setMaximum(240);
@@ -89,6 +100,8 @@ public:
         gridLayout = new QGridLayout();
         gridLayout->setSpacing(0);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        gridLayout->setSizeConstraint(QLayout::SetMaximumSize);
+        gridLayout->setContentsMargins(-1, 0, -1, -1);
         buttonLeft = new QPushButton(horizontalLayoutWidget);
         buttonLeft->setObjectName(QStringLiteral("buttonLeft"));
         buttonLeft->setEnabled(false);
@@ -106,11 +119,11 @@ public:
         buttonForeward = new QPushButton(horizontalLayoutWidget);
         buttonForeward->setObjectName(QStringLiteral("buttonForeward"));
         buttonForeward->setEnabled(false);
-        QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(buttonForeward->sizePolicy().hasHeightForWidth());
-        buttonForeward->setSizePolicy(sizePolicy);
+        QSizePolicy sizePolicy2(QSizePolicy::Minimum, QSizePolicy::Fixed);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(buttonForeward->sizePolicy().hasHeightForWidth());
+        buttonForeward->setSizePolicy(sizePolicy2);
         buttonForeward->setMaximumSize(QSize(50, 50));
         buttonForeward->setToolTipDuration(-1);
         buttonForeward->setStyleSheet(QStringLiteral("border: 0; border-radius: 3px; outline: 0px;"));
@@ -150,7 +163,7 @@ public:
 
         buttonRight = new QPushButton(horizontalLayoutWidget);
         buttonRight->setObjectName(QStringLiteral("buttonRight"));
-        buttonRight->setEnabled(true);
+        buttonRight->setEnabled(false);
         buttonRight->setMaximumSize(QSize(50, 50));
         buttonRight->setStyleSheet(QStringLiteral("border: 0; border-radius: 3px; outline: 0px;"));
         QIcon icon4;
@@ -180,10 +193,13 @@ public:
         MainWindow->setStatusBar(statusBar);
         dockWidgetCamera = new QDockWidget(MainWindow);
         dockWidgetCamera->setObjectName(QStringLiteral("dockWidgetCamera"));
-        dockWidgetCamera->setEnabled(false);
-        dockWidgetCamera->setMinimumSize(QSize(400, 41));
+        dockWidgetCamera->setEnabled(true);
+        dockWidgetCamera->setMinimumSize(QSize(400, 300));
+        dockWidgetCamera->setAcceptDrops(true);
         dockWidgetCamera->setLayoutDirection(Qt::LeftToRight);
+        dockWidgetCamera->setAutoFillBackground(true);
         dockWidgetCamera->setFloating(false);
+        dockWidgetCamera->setFeatures(QDockWidget::AllDockWidgetFeatures);
         dockWidgetContents = new QWidget();
         dockWidgetContents->setObjectName(QStringLiteral("dockWidgetContents"));
         dockWidgetCamera->setWidget(dockWidgetContents);

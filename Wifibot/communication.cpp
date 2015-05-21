@@ -10,7 +10,7 @@ Communication::Communication(QObject *parent) :
     this->left = false;
     this->right = false;
     this->battery = 0;
-    this->webcam = false;
+
     camera = new QNetworkAccessManager(this);
     timer = new QTimer();
     timer->setInterval(100);

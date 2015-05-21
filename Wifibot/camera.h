@@ -2,6 +2,7 @@
 #define Camera_H
 
 #include "viewergl.h"
+#include "ui_mainwindow.h"
 
 #include "opencv2/core/core.hpp"
 #include "opencv2/face.hpp"
@@ -9,9 +10,9 @@
 #include "opencv2/imgproc/imgproc.hpp"
 #include "opencv2/objdetect/objdetect.hpp"
 
-#include <iostream>
-#include <fstream>
-#include <sstream>
+#include <QThread>
+#include <QMovie>
+#include <QLabel>
 
 using namespace cv;
 using namespace std;
@@ -22,22 +23,18 @@ class Camera : public QObject
     Q_OBJECT
 
 public:
-    Camera();
-    void setVideoOutput(ViewerGl *viewer);
+    Camera(Ui::MainWindow *ui);
     void start();
     void stop();
 
 private:
+    Ui::MainWindow *ui;
     ViewerGl *viewer;
+    QLabel *viewerMessage;
 
     cv::VideoCapture mCapture;
 
-    // Get the path to your CSV:
     string fn_haar;
-
-    // These vectors hold the images and corresponding labels:
-    vector<Mat> images;
-    vector<int> labels;
 
     int im_width;
     int im_height;
@@ -57,6 +54,26 @@ private:
 
 protected:
     void timerEvent(QTimerEvent *event);
+
+private slots:
+    void update(VideoCapture);
+
 };
+
+class ThreadInit : public QThread
+{
+    Q_OBJECT
+
+protected:
+
+    void run()
+    {
+        const std::string videoStreamAddress = "http://192.168.1.106:8080/?action=stream?.mjpg";
+        emit resultReady(VideoCapture(0));
+    }
+signals:
+    void resultReady(VideoCapture);
+};
+
 
 #endif // Camera_H

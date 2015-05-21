@@ -1,16 +1,13 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
-#include "communication.h"
-#include <QTimer>
-#include <qmediaplayer.h>
 
-#include <QtGui/QMovie>
+#include "communication.h"
+
+
 #include <QtWidgets/QWidget>
 #include "connexion.h"
 #include "camera.h"
-#include "viewergl.h"
 
 #include <unistd.h>
 #include <QtWidgets>
@@ -18,6 +15,8 @@
 #include <qvideosurfaceformat.h>
 #include <QKeyEvent>
 
+#include <QMainWindow>
+#include <QTimer>
 
 #define cameraup "/?action=command&dest=0&plugin=0&id=10094853&group=1&value=-200"
 #define cameradown "/?action=command&dest=0&plugin=0&id=10094853&group=1&value=200"
@@ -75,12 +74,13 @@ private slots:
 
     void on_buttonCamera_clicked();
 
+    void on_dockWidgetCamera_destroyed();
+
 private:
     Ui::MainWindow *ui;
 
-    Camera *w;
+    Camera *cam;
 
-    QMediaPlayer *mediaPlayer;
     QProgressBar *battery;
     QRadioButton *forewardSensor;
     QRadioButton *backwardSensor;

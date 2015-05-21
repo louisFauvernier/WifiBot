@@ -1,8 +1,4 @@
 #include "connexion.h"
-#include "mainwindow.h"
-#include "ui_connexion.h"
-#include "ui_mainwindow.h"
-#include <QDebug>
 
 Connexion::Connexion(QWidget *parent, Communication *co) :
     QDialog(parent),
